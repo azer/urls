@@ -1,0 +1,18 @@
+{
+  "license": "BSD",
+  "author": "azer",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kaktus/urls.git"
+  },
+  "scripts": {
+    "test": "node test"
+  },
+  "main": "index.js",
+  "description": "URL Library for Kaktus",
+  "version": "0.0.0",
+  "name": "urls",
+  "devDependencies": {
+    "prova": "azer/prova"
+  }
+}
