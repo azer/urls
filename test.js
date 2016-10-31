@@ -25,9 +25,10 @@ test('hostname', function (t) {
 })
 
 test('protocol', function (t) {
-  t.plan(2)
+  t.plan(3)
   t.equal(urls.protocol('http://yo.lo'), 'http')
   t.equal(urls.protocol('https://yo.lo'), 'https')
+  t.equal(urls.protocol('yo.lo'), 'http')
 })
 
 test('normalize', function (t) {
