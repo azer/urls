@@ -15,8 +15,9 @@ test('clean', function (t) {
 })
 
 test('page', function (t) {
-  t.plan(1)
+  t.plan(2)
   t.equal(urls.page('https://yolo.com/yo/lo#bar'), 'yolo.com/yo/lo')
+  t.equal(urls.page('https://yolo.com/?#bar'), 'yolo.com')
 })
 
 test('hostname', function (t) {

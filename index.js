@@ -28,8 +28,7 @@ function clean (url) {
 }
 
 function page (url) {
-  return clean(url)
-    .replace(/\#.*$/, '')
+  return clean(url.replace(/\#.*$/, ''))
 }
 
 function hostname (url) {
