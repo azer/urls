@@ -33,11 +33,11 @@ function page (url) {
 }
 
 function hostname (url) {
-  return parse(url).hostname.replace(/^www\./, '')
+  return parse(normalize(url)).hostname.replace(/^www\./, '')
 }
 
 function normalize (input) {
-  if (input.trim().length === 0) return 'about:blank'
+  if (input.trim().length === 0) return ''
 
   if (isSearchQuery(input)) {
     return `https://google.com/search?q=${encodeURI(input)}`

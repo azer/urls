@@ -20,8 +20,9 @@ test('page', function (t) {
 })
 
 test('hostname', function (t) {
-  t.plan(1)
+  t.plan(2)
   t.equal(urls.hostname('http://www.yo.lo.co.uk'), 'yo.lo.co.uk')
+  t.equal(urls.hostname('foo.com/yolo'), 'foo.com')
 })
 
 test('protocol', function (t) {
@@ -35,7 +36,7 @@ test('normalize', function (t) {
   t.plan(3)
   t.equal(urls.normalize('yo.lo'), 'http://yo.lo')
   t.equal(urls.normalize('yo lo'), 'https://google.com/search?q=yo%20lo')
-  t.equal(urls.normalize(''), 'about:blank')
+  t.equal(urls.normalize(''), '')
 })
 
 test('isSearchQuery', function (t) {
