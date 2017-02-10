@@ -2,7 +2,7 @@ const test = require("prova")
 const urls = require("./")
 
 test('clean', function (t) {
-  t.plan(9)
+  t.plan(10)
   t.equal(urls.clean('http://yolo.com'), 'yolo.com')
   t.equal(urls.clean('https://yolo.com'), 'yolo.com')
   t.equal(urls.clean('https://yolo.com#'), 'yolo.com')
@@ -12,6 +12,7 @@ test('clean', function (t) {
   t.equal(urls.clean('https://yolo.com/yo/lo/#?'), 'yolo.com/yo/lo')
   t.equal(urls.clean('https://yolo.com/yo/lo?foo'), 'yolo.com/yo/lo?foo')
   t.equal(urls.clean('https://yolo.com/yo/lo#bar'), 'yolo.com/yo/lo#bar')
+  t.equal(urls.clean('postgres://use-r:p_as-s@host.com:5432/path?k=v#f'), 'host.com:5432/path?k=v#f')
 })
 
 test('page', function (t) {

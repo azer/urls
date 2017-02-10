@@ -23,6 +23,7 @@ function clean (url) {
   return url
     .trim()
     .replace(/^\w+:\/\//, '')
+    .replace(/^[\w-_]+:[\w-_]+@/, '')
     .replace(/(\/|\?|\&|#)*$/, '')
     .replace(/^www\./, '')
 }
