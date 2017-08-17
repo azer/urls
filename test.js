@@ -2,7 +2,7 @@ const test = require("prova")
 const urls = require("./")
 
 test('clean', function (t) {
-  t.plan(10)
+  t.plan(13)
   t.equal(urls.clean('http://yolo.com'), 'yolo.com')
   t.equal(urls.clean('https://yolo.com'), 'yolo.com')
   t.equal(urls.clean('https://yolo.com#'), 'yolo.com')
@@ -10,9 +10,12 @@ test('clean', function (t) {
   t.equal(urls.clean('https://yolo.com/yo/lo?'), 'yolo.com/yo/lo')
   t.equal(urls.clean('https://yolo.com/yo/lo#'), 'yolo.com/yo/lo')
   t.equal(urls.clean('https://yolo.com/yo/lo/#?'), 'yolo.com/yo/lo')
-  t.equal(urls.clean('https://yolo.com/yo/lo?foo'), 'yolo.com/yo/lo?foo')
+  t.equal(urls.clean('https://yolo.com/yo/lo/?foo'), 'yolo.com/yo/lo?foo')
   t.equal(urls.clean('https://yolo.com/yo/lo#bar'), 'yolo.com/yo/lo#bar')
   t.equal(urls.clean('postgres://use-r:p_as-s@host.com:5432/path?k=v#f'), 'host.com:5432/path?k=v#f')
+  t.equal(urls.clean('http://yolo.com/blog/?utm_content=bufferc60dd&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer'), 'yolo.com/blog')
+  t.equal(urls.clean('http://yolo.com/blog/?utm_content=bufferc60dd&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer&foo=bar'), 'yolo.com/blog?foo=bar')
+  t.equal(urls.clean('http://yolo.com/blog/?span=eggs&utm_content=bufferc60dd&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer&ref=asd&reffoo=bar'), 'yolo.com/blog?span=eggs&reffoo=bar')
 })
 
 test('page', function (t) {

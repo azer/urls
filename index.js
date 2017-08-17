@@ -20,11 +20,12 @@ function protocol (url) {
 }
 
 function clean (url) {
-  return url
+  return cleanUTM(url)
     .trim()
     .replace(/^\w+:\/\//, '')
     .replace(/^[\w-_]+:[\w-_]+@/, '')
     .replace(/(\/|\?|\&|#)*$/, '')
+    .replace(/\/\?/, '?')
     .replace(/^www\./, '')
 }
 
@@ -56,4 +57,12 @@ function isSearchQuery (input) {
 
 function isURL (input) {
   return input.indexOf(' ') === -1 && (/^\w+:\/\//.test(input) || input.indexOf('.') > 0 || input.indexOf(':') > 0)
+}
+
+function cleanUTM (url) {
+  return url
+    .replace(/(\?|\&)utm_[\w]+\=[^\&]+/g, '$1')
+    .replace(/(\?|\&)ref\=[^\&]+\&?/, '$1')
+    .replace(/[\&]{2,}/,'&')
+    .replace('?&', '?')
 }
