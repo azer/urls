@@ -24,6 +24,7 @@ function clean (url) {
     .trim()
     .replace(/^\w+:\/\//, '')
     .replace(/^[\w-_]+:[\w-_]+@/, '')
+    .replace(/#.*$/, '')
     .replace(/(\/|\?|\&|#)*$/, '')
     .replace(/\/\?/, '?')
     .replace(/^www\./, '')
